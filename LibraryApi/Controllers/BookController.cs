@@ -42,12 +42,20 @@ namespace LibraryApi.Controllers
         [HttpGet("Title")]
         public async Task<IEnumerable<Book>> Search(string title)
         {
-            Console.WriteLine(title);
+            //Console.WriteLine(title);
 
             IEnumerable<Book> book = await _appContext.Books.Where(b => b.Title == title).ToListAsync();            
             return book;
         }
 
+        [HttpGet("Author")]
+        public async Task<IEnumerable<Book>> GetAuthor(string author)
+        {
+           // Console.WriteLine(title);
+
+            IEnumerable<Book> authors = await _appContext.Books.Where(a => a.Author == author).ToListAsync();
+            return authors;
+        }
 
         /*[HttpGet("{GetBook}/{title}/{author?}")]
         public async Task<ActionResult<IEnumerable<Book>>> GetBook(string author , Title? title)
